@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+	<servlet>
+		<servlet-name>action</servlet-name> <!-- action 실행-->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup><!--1 순위로 잡아라  -->
+	</servlet>
+	
+	<servlet-mapping> <!--servlet와 이름이 같아야 한다 (action)  -->
+		<servlet-name>action</servlet-name> <!--들어갈 이름  -->
+		<url-pattern>*.do</url-pattern><!--앞은 상관없고 .do 로 들어와라  -->
+	</servlet-mapping>
+</web-app>
