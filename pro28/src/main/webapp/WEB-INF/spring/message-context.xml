@@ -2,18 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--스프링의 SessionLocaleResolver클래스를 이용해 locale정보를 세션에 저장해서 사용   -->
 	<bean id="localeResolver" 
                   class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
    <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
       <property name="basenames">
-         <list>                
+         <list>  <!--패키지 locale에서 messages.property를 읽어들인다   -->              
             <value>classpath:locale/messages</value>
          </list>
       </property>
       <!-- 파일의 기본 인코딩을 지정합니다. -->
       <property name="defaultEncoding" value="UTF-8" />
-      <property name="cacheSeconds" value="60"/>
+      <property name="cacheSeconds" value="60"/><!--파일 변경 확인 주기 지정 -60초  -->
    </bean>
 </beans>
 

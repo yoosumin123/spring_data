@@ -34,11 +34,12 @@
        <beans:property name="defaultEncoding" value="utf-8" />
     </beans:bean> 
     
-    <mvc:interceptors>
+    <!--브라우저의 요청에 대해 수행할 인터셉터를 빈으로 설정  -->
+    <mvc:interceptors><!--인터셉터 기능을 사용하도록 설정 -->
       <mvc:interceptor>
          <mvc:mapping path="/test/*.do"/> 
-				 <mvc:mapping path="/*/*.do"/>
-         <beans:bean class="com.myspring.pro28.ex05.LocaleInterceptor" />
+				 <mvc:mapping path="/*/*.do"/><!--모든 요청에 대해 인터셉터를 수행  -->
+         <beans:bean class="com.myspring.pro28.ex05.LocaleInterceptor" /><!--인터셉터 기능을 수행할 빈을 설정  -->
       </mvc:interceptor>
    </mvc:interceptors>
 	
