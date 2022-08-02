@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -30,7 +31,7 @@
 	<!-- 타일즈 실습 설정 -->
     <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
-			<beans:list>
+			<beans:list> <!--패키지 tiles의 파일이 2개 이상이니까 모두 읽기위해서  -->
 				<beans:value>classpath:tiles/*.xml</beans:value><!--패키지 tiles의 모든 설정 xml파일 읽기  -->
 			</beans:list>
 		</beans:property>

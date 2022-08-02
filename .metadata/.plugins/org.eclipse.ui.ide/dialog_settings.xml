@@ -7,9 +7,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\ysm_data\java_spr2\pro23"/>
 			<item value="C:\Users\505\Downloads\pro27"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="D:\ysm_data\java_spr2\project30\src\main\resources\tiles\tiles_member.xml"/>
 			<item value=""/>
 		</list>
 	</section>
