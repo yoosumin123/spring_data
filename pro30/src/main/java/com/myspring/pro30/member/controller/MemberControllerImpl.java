@@ -99,7 +99,14 @@ public class MemberControllerImpl   implements MemberController {
 			session.setAttribute("member", memberVO);/*세션에 회원 정보 저장 */
 			session.setAttribute("isLogOn", true);/* 세션에 로그인 상태를 true로 설정 */
 			/*memberVO로 반환된 값이 있으면 세션을 이용해 로그인 상태를 true로 저장*/
-			mav.setViewName("redirect:/member/listMembers.do");
+			/* mav.setViewName("redirect:/member/listMembers.do"); */
+			String action = (String)session.getAttribute("action");	//로그인 성공 시 세션에 저장된 action 값을 가져온다.
+			session.removeAttribute("action");
+			if(action!=null) {
+				mav.setViewName("redirect:"+action);
+			}else {
+				mav.setViewName("redirect:/member/listMembers.do");
+			}
 	}else {
 			rAttr.addAttribute("result", "loginFailed");/*로그인 실패시 메시지를 로그인창으로 전달 */
 		    mav.setViewName("redirect:/member/loginForm.do");/*로그인 실패시 다시 로그인창으로 리다이렉트 */
@@ -120,10 +127,13 @@ public class MemberControllerImpl   implements MemberController {
 
 	@RequestMapping(value = "/member/*Form.do", method =  RequestMethod.GET)
 	private ModelAndView form(@RequestParam(value= "result", required=false) String result,
+			                  @RequestParam(value= "action", required=false) String action,
 						       HttpServletRequest request, 
 						       HttpServletResponse response) throws Exception {
 		//String viewName = getViewName(request);
 		String viewName = (String)request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		session.setAttribute("action", action);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("result",result);
 		mav.setViewName(viewName);

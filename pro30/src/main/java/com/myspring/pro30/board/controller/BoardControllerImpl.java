@@ -110,10 +110,10 @@ public class BoardControllerImpl  implements BoardController{
 	
 	//한개의 이미지 보여주기
 	@RequestMapping(value="/board/viewArticle.do" ,method = RequestMethod.GET)
-	public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,
+	public ModelAndView viewArticle(@RequestParam("articleNO") int articleNO,// 조회할 글 번호를 가져옴
                                     HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String)request.getAttribute("viewName");
-		articleVO=boardService.viewArticle(articleNO);
+		articleVO=boardService.viewArticle(articleNO); // 조회한 글 정보를 articleVO에 설정
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
 		mav.addObject("article", articleVO);
@@ -148,7 +148,7 @@ public class BoardControllerImpl  implements BoardController{
 		String name=(String)enu.nextElement();
 		String value=multipartRequest.getParameter(name);
 		articleMap.put(name,value);
-	}
+	}       
 	
 	String imageFileName= upload(multipartRequest);
 	articleMap.put("imageFileName", imageFileName);
@@ -164,7 +164,7 @@ public class BoardControllerImpl  implements BoardController{
          File srcFile = new File(ARTICLE_IMAGE_REPO+"\\"+"temp"+"\\"+imageFileName);
          File destDir = new File(ARTICLE_IMAGE_REPO+"\\"+articleNO);
          FileUtils.moveFileToDirectory(srcFile, destDir, true);
-         
+          // 기존 파일 삭제
          String originalFileName = (String)articleMap.get("originalFileName");
          File oldFile = new File(ARTICLE_IMAGE_REPO+"\\"+articleNO+"\\"+originalFileName);
          oldFile.delete();
@@ -188,7 +188,7 @@ public class BoardControllerImpl  implements BoardController{
   
   @Override
   @RequestMapping(value="/board/removeArticle.do" ,method = RequestMethod.POST)
-  @ResponseBody
+  @ResponseBody                       // 삭제할 글 번호를 가져옴
   public ResponseEntity  removeArticle(@RequestParam("articleNO") int articleNO,
                               HttpServletRequest request, HttpServletResponse response) throws Exception{
 	response.setContentType("text/html; charset=UTF-8");
@@ -196,8 +196,9 @@ public class BoardControllerImpl  implements BoardController{
 	ResponseEntity resEnt=null;
 	HttpHeaders responseHeaders = new HttpHeaders();
 	responseHeaders.add("Content-Type", "text/html; charset=utf-8");
-	try {
+	try { // 글 번호를 전달해서 글을 삭제
 		boardService.removeArticle(articleNO);
+		// 글에 첨부된 이미지 파일이 저장된 폴더도 삭제
 		File destDir = new File(ARTICLE_IMAGE_REPO+"\\"+articleNO);
 		FileUtils.deleteDirectory(destDir);
 		

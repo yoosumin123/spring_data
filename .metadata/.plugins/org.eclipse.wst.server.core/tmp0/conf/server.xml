@@ -177,7 +177,7 @@
       
       
       
-      <Context docBase="D:\ysm_data\java_spr2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\ysm_data\java_spr2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\project30" path="/pro30" reloadable="true" source="org.eclipse.jst.jee.server:project30"/></Host>
+      <Context docBase="D:\ysm_data\java_spr2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="D:\ysm_data\java_spr2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\pro30" path="/pro30" reloadable="true" source="org.eclipse.jst.jee.server:pro30"/></Host>
     </Engine>
   </Service>
 </Server>

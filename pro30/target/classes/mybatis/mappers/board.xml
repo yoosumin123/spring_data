@@ -53,10 +53,10 @@
     ]]>
   </select>
   
-  <update id="updateArticle"  parameterType="java.util.Map">
+  <update id="updateArticle"  parameterType="java.util.Map"> <!--Map으로 글 정보를 가져옴  -->
 			update t_board
 			set title=#{title},	 
-			content=#{content}
+			content=#{content}   <!--  -->
 			 <if test="imageFileName!='' and imageFileName!=null">
 			  , imageFileName=#{imageFileName}
 			</if>
