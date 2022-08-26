@@ -63,33 +63,37 @@
             <!-- /.row -->
             
 <script type="text/javascript">
-${document}.ready(function(){
-	
-	var formObj = ${"form"};
+$(document).ready(function(){
 
-	${'button'}.on("click", function(e){
+	var formObj = $("form");
+	
+	$('button').on("click", function(e){
 		
-		e.preventDefault();
+		e.preventDefault();  //기본 기능 중지
 		
-		var operation = ${this}.data("oper");
+		 var operation = $(this).data("oper");
 		
 		console.log(operation);
 		
-		if(operation === 'remove'){
-			formObj.attr("action","/board/remove");
-		} else if(operation === 'modify'){
-			formObj.attr("action","/board/modify");
-		} else if(operation === 'list'){
-			// move to list
-			self.location="/board/list";
-			return;
+		if(operation === 'list'){
+			formObj.attr("action", "/board/list")
+			.attr("method", "get");
+			/* .formObj.empty(); */
+		}else if(operation === 'remove'){
+			formObj.attr("action", "/board/remove")
+			.attr("method", "post");
+			
+		}else if(operation === 'modify'){
+			formObj.attr("action", "/board/modify")
+			.attr("method", "post");
+			
 		}
-		// formObj.submit();
-	});
-	
+		
+		formObj.submit();	
+		
+	});	
 });
-
-</script> 
+</script>     
        
 
 <%@ include file="../includes/footer.jsp" %>
